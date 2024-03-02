@@ -24,16 +24,14 @@ app.route('/').get((req,res)=>{
 })
 // insert data on button press
 app.get('/test', async (req,res)=>{
-  const obj = {type: undefined,ph:undefined}
   // console.log(first,last)
   const getFields = await pool.query('select * from water_type order by type_id desc')
   const allNames = getFields.rows;
   // map a list of rows
   let map = [...allNames].map(field=>{
-    obj.type = field.type_name
-    obj.ph = field.ph
-    return obj
+        return {type:field.type_name,ph:field.ph};
   })
+  console.log(map)
   res.json(map)
 })
 
