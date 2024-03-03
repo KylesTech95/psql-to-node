@@ -3,6 +3,7 @@ const { pool } = require('./db');
 async function insertData() {
   const [type_name, ph] = process.argv.slice(2)
   try{
+    
     const res = await pool.query(
         "insert into water_type(type_name,ph) values($1, $2)",
         [type_name, ph]

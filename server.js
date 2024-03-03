@@ -29,7 +29,7 @@ app.get('/test', async (req,res)=>{
   const allNames = getFields.rows;
   // map a list of rows
   let map = [...allNames].map(field=>{
-        return {type:field.type_name,ph:field.ph};
+        return {id:field.type_id,type:field.type_name,ph:field.ph};
   })
   console.log(map)
   res.json(map)
